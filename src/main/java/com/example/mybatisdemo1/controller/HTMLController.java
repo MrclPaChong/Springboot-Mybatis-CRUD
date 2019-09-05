@@ -18,6 +18,10 @@ import java.util.HashMap;
  */
 @Controller
 public class HTMLController {
+
+    /**
+     *  service以来注入
+     */
     @Autowired
     UserService userService;
 

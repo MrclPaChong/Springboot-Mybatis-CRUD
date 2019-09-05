@@ -19,16 +19,13 @@ import javax.annotation.Resource;
 
 @RestController
 public class UserController {
-//    @Autowired
+
+    //@Autowired
     @Resource
     UserService userService;
 
-
     /**
-     * description： 设置使用分页
-     * @param page
-     * @param size
-     * @return
+     *  分页查询
      */
     @PostMapping(value = "/getAllUser")
     public Object getAllUser(@RequestParam(value = "page",defaultValue = "1")int page,
@@ -36,6 +33,9 @@ public class UserController {
         return userService.getAllUser1(page, size);
     }
 
+    /**
+     *  添加
+     */
     @PostMapping(value = "/insert")
     public int insert(@Param("userInfoId") Long userInfoId,
                        @Param("username") String userName,
@@ -49,22 +49,37 @@ public class UserController {
         return userService.insert(userInfo);
 
     }
+
+    /**
+     *  根据ID删除
+     */
     @PostMapping(value = "/delete")
     public int delete(Long userInfoId){
         return userService.delete(userInfoId);
     }
+
+    /**
+     *  更新
+     * @param userInfo
+     * @return
+     */
     @PostMapping(value = "/update")
     public int update(UserInfo userInfo){
         return userService.update(userInfo);
     }
 
-//    @PostMapping(value = "/updateById")
-//    public int updateById(@Param("userInfoId") Long userInfoId, @Param("userName") String userName, @Param("age") String age, @Param("sex") String sex){
-//        return userService.updateById(userInfoId, userName, age, sex);
-//    }
+    /**
+     *  根据ID更新字段
+     */
     @PostMapping(value = "/updateById")
     public int updateById(Long userInfoId, String userName,Integer age,String sex){
         return userService.updateById(userInfoId,userName,age, sex);
     }
+
+
+    //    @PostMapping(value = "/updateById")
+    //    public int updateById(@Param("userInfoId") Long userInfoId, @Param("userName") String userName, @Param("age") String age, @Param("sex") String sex){
+    //        return userService.updateById(userInfoId, userName, age, sex);
+    //    }
 
 }

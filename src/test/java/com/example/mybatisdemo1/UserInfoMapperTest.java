@@ -46,7 +46,7 @@ public class UserInfoMapperTest {
     @Test
     public void testQueryAll_split_page(){
         //分页查询
-        Object users = userService.getAllUser1(1, 3);
+        Object users = userService.getAllUser1(1, 4);
         if (users == null ) {
             System.out.println("is null");
         } else {
@@ -217,9 +217,9 @@ public class UserInfoMapperTest {
         //userInfo.setAge(30);
         userInfo.setSex(UserSexEnum.WOMAN.toString());
         userInfo.setUserInfoId(2L);
-        userInfo.setSalary(2000.00);
+        userInfo.setSalary(9000.00);
         userInfo.setCompleted(Boolean.TRUE);
-        userInfo.setRemark("更新的备注");
+        userInfo.setRemark("更新的备注：mrcl");
         Integer a = userService.update(userInfo);
         // 查看返回值
         System.out.println("a: "+ a );
